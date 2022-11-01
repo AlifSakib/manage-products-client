@@ -25,6 +25,14 @@ const Home = () => {
     newuser[field] = value;
     setUser(newuser);
   };
+
+  const handleDeletProduct = (product) => {
+    fetch(`http://localhost:5000/products/${product._id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  };
   return (
     <div>
       {/* Products Section */}
@@ -36,7 +44,11 @@ const Home = () => {
             </h1>
             <div className="grid md:grid-cols-2 lg:grid-cols-3">
               {products.map((product) => (
-                <Product key={product._id} product={product}></Product>
+                <Product
+                  key={product._id}
+                  product={product}
+                  handleDeletProduct={handleDeletProduct}
+                ></Product>
               ))}
             </div>
           </div>

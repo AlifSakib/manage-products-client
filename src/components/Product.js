@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Product = ({ product }) => {
+const Product = ({ product, handleDeletProduct }) => {
   const { name, picture, price, quantity } = product;
   return (
     <div>
@@ -30,7 +30,10 @@ const Product = ({ product }) => {
                   <p className="mt-1">${price}</p>
                 </div>
                 <div className="space-y-4 mt-2 lg:space-x-4">
-                  <button className="text-white bg-blue-500 border-0 py-2 px-8 focus:outline-none hover:bg-blue-600 rounded ">
+                  <button
+                    onClick={() => handleDeletProduct(product)}
+                    className="text-white bg-blue-500 border-0 py-2 px-8 focus:outline-none hover:bg-blue-600 rounded "
+                  >
                     Delete
                   </button>
                   <button className="text-white bg-purple-500 border-0 py-2 px-8 focus:outline-none hover:bg-purple-600 rounded ">
