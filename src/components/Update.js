@@ -5,9 +5,9 @@ const Update = () => {
   const product = useLoaderData();
   const [updatedProduct, setUpdatedProduct] = useState(product);
   const { name, picture, quantity, price } = product;
+
   const handleAUpdateProduct = (e) => {
     e.preventDefault();
-
     fetch(`http://localhost:5000/product/${product._id}`, {
       method: "PUT",
       headers: {
@@ -18,6 +18,7 @@ const Update = () => {
       .then((res) => res.json())
       .then((data) => console.log(data));
   };
+
   const handleInputChange = (e) => {
     const field = e.target.name;
     const value = e.target.value;
@@ -25,6 +26,7 @@ const Update = () => {
     product[field] = value;
     setUpdatedProduct(product);
   };
+
   return (
     <div>
       <section className="text-gray-600 body-font">
