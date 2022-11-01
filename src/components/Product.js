@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Product = ({ product, handleDeletProduct }) => {
+const Product = ({ product, handleDeletProduct, handleUpdateProduct }) => {
   const { name, picture, price, quantity } = product;
   return (
     <div>
@@ -20,14 +20,15 @@ const Product = ({ product, handleDeletProduct }) => {
                     src={picture}
                   />
                 </Link>
-                <div className="mt-4">
+                <div className="mt-4 text-start px-4">
                   <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
                     Smart Phone
                   </h3>
                   <h2 className="text-gray-900 title-font text-lg font-medium">
                     {name}
                   </h2>
-                  <p className="mt-1">${price}</p>
+                  <p className="mt-1">{price}$</p>
+                  <p className="mt-1">Quantity : {quantity}</p>
                 </div>
                 <div className="space-y-4 mt-2 lg:space-x-4">
                   <button
@@ -36,9 +37,14 @@ const Product = ({ product, handleDeletProduct }) => {
                   >
                     Delete
                   </button>
-                  <button className="text-white bg-purple-500 border-0 py-2 px-8 focus:outline-none hover:bg-purple-600 rounded ">
-                    Update
-                  </button>
+                  <Link to={`/update/${product._id}`}>
+                    <button
+                      onClick={() => handleUpdateProduct(product)}
+                      className="text-white bg-purple-500 border-0 py-2 px-8 focus:outline-none hover:bg-purple-600 rounded "
+                    >
+                      Update
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
